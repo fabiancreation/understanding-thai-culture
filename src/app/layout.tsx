@@ -1,44 +1,30 @@
 import type { Metadata } from "next";
-import { Literata, Inter } from "next/font/google";
+import { Playfair_Display, DM_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
-const literata = Literata({
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  variable: "--font-literata",
+  variable: "--font-playfair",
   display: "swap",
-  weight: ["400", "500", "700"],
-  style: ["normal", "italic"],
 });
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-dm-sans",
   display: "swap",
-  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://understandingthaiculture.com"),
-  title: {
-    default: "Understanding Thai Culture",
-    template: "%s · Understanding Thai Culture",
-  },
+  title: "Understanding Thai Culture",
   description:
-    "A long-form project on how Thailand actually works. The values, hierarchies, and silences underneath everyday life. For people who love Thailand and want to see past the surface.",
+    "A book series exploring Thai culture, Bangkok, and Chiang Mai. Written for travelers, digital nomads, expats, and anyone curious about Thailand.",
   openGraph: {
     title: "Understanding Thai Culture",
     description:
-      "A long-form project on how Thailand actually works. For people who love Thailand and want to see past the surface.",
+      "A book series exploring Thai culture, Bangkok, and Chiang Mai.",
     type: "website",
     locale: "en_US",
-    siteName: "Understanding Thai Culture",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Understanding Thai Culture",
-    description:
-      "A long-form project on how Thailand actually works. For people who love Thailand and want to see past the surface.",
   },
 };
 
@@ -48,8 +34,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${literata.variable} ${inter.variable}`}>
-      <body className="min-h-screen">
+    <html
+      lang="en"
+      className={`${playfair.variable} ${dmSans.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col font-sans">
         {children}
         <Analytics />
       </body>
